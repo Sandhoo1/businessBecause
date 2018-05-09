@@ -13,5 +13,6 @@ $stmnt=$conn->prepare(mysql_query($insert));
    echo "Record Successfully Saved";
   } else {
    echo "Error in saving record";
+	  echo "Error in saving record";
   }
 ?>
