@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  
+<form name="frm" method="POST" action="">
+  <br><br>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+      <input id="_name" type="text" class="form-control" name="_name" placeholder="Name">
+    </div>
+	<br>
+    
+	
+	 <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+      <input id="_email" type="text" class="form-control" name="_email" placeholder="Email">
+    </div>
+	<br>
+	<div class="input-group">
+	<h5>Gender: 
+	<div class="radio-inline"><label><input type="radio"  input id="_gender" name="_gender" value="Male">Male</label></div>
+	<div class="radio-inline"><label><input type="radio"  input id="_gender" name="_gender" value="female">Female</label></div>
+</h5>
+</div>
+	<br>
+	 <div class="input-group">
+      <span class="input-group-addon">Comments</span>
+      <input id="_comment" type="text" class="form-control" name="_comment" placeholder="Comments Please">
+    </div>
+	<br>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+      <input id="_password" type="password" class="form-control" name="_password" placeholder="Password">
+    </div>
+<br>
+   <input type="submit" name="Update" id="update" value="Save" />
+  </form>
+
+
+
+</body>
+
+</html>
+
+<script>
+$("#update").click(function(e) {
+  e.preventDefault();
+  var _name = $("#_name").val(); 
+  var _email = $("#_email").val();
+   var _gender = $("#_gender").val();
+   var _password = $("#_password").val();
+   var _comment = $("#_comment").val();
+  
+  var dataString = '_name='+_name+'&_email='+_email+'&_gender='+_gender+'&_password='+_password+'&_comment='+_comment;
+  $.ajax({
+    type:'POST',
+    data:dataString,
+    url:'insert.php',
+    success:function(data) {
+      alert(data);
+    }
+  });
+});
+</script>
