@@ -1,24 +1,36 @@
 <?php
-$server="hostName";//example
-$userName2="abcd";//example
-$password2="xyxg122,.1wsj";//example
-$db_Name="businessbecause";//example
+class DBController {
+	
+	
+	private $host = "localhost";
+	private $user = "root";
+	private $password = "";
+	private $database = "BusinessBecause";
 
-try
-
-{
-
-$conn=new PDO("mysql:host=$server;dbname=$db_Name;",$userName2,$password2);
-
+	
+	function __construct() {
+		$conn = $this->connectDB();
+		if(!empty($conn)) {
+			$this->selectDB($conn);
+		}
+	}
+	
+	function connectDB() {
+		$conn = mysql_connect($this->host,$this->user,$this->password);
+		return $conn;
+	}
+	
+	function selectDB($conn) {
+		mysql_select_db($this->database,$conn);
+	}
+	function insertQuery($query) {
+		$result = mysql_query($query);
+		if (!$result) {
+			die('Invalid query: ' . mysql_error());
+		} else {
+			return mysql_insert_id();
+		}
+	}
 }
-catch (PDOException $e)
-
-{
-
-die("Connection Failed".$e->getMessage());
-}
-
-
-
 
 ?>
