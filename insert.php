@@ -11,6 +11,6 @@
    echo "Record Successfully Saved";
    
   } else {
-   echo "Error in saving record";
+   echo "Error in saving records";
   }
 ?>
